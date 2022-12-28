@@ -23,7 +23,7 @@ const Products = () => {
       <div className="grid grid-cols-4 gap-10">
         {loading && "Loading..."}
         {
-          products.map(product => <ProductCard data={product} key={crypto.randomUUID()} />)
+          products.map(product => <ProductCard data={product} key={crypto.randomUUID()} id={product.id} />)
         }
       </div>
     </div>

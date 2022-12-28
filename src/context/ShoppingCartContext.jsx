@@ -1,4 +1,4 @@
-import {createContext, useState} from "react";
+import { createContext, useState } from "react";
 
 const ShoppingCartContext = createContext();
 
@@ -6,16 +6,17 @@ export function ShoppingCartProvider({ children }) {
   const [cartProducts, setCartProducts] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
 
-  const addToCart = (productPicture, productName, productPrice) => {
-    setCartProducts(prevState => [...prevState, {productPicture, productName, productPrice}]);
-    setTotalPrice(totalPrice += productPrice)
+  const addToCart = (productId, productPicture, productName, productPrice) => {
+    const product = cartProducts.find(product => product.id === productId)
+    if (product) {
+      product.quantity++;
+    } else {
+      setCartProducts((prevState) => [...prevState, { id: productId, image: productPicture, name: productName, price: productPrice, quantity: 1 }]);
+    }
+    setTotalPrice((prevState) => (prevState += productPrice));
   };
 
-  return (
-    <ShoppingCartContext.Provider value={{ cartProducts }}>
-      {children}
-    </ShoppingCartContext.Provider>
-  )
+  return <ShoppingCartContext.Provider value={{ cartProducts, totalPrice, addToCart }}>{children}</ShoppingCartContext.Provider>;
 }
 
 export default ShoppingCartContext;
