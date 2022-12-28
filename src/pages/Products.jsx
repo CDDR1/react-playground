@@ -21,7 +21,7 @@ const Products = () => {
     <div className="p-4">
       <h1 className="my-4 font-semibold text-3xl">Products</h1>
       <div className="grid grid-cols-4 gap-10">
-        {loading && "Is loading..."}
+        {loading && "Loading..."}
         {
           products.map(product => <ProductCard data={product} key={crypto.randomUUID()} />)
         }

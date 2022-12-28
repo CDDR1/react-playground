@@ -11,7 +11,9 @@ const ProductCard = ({ data }) => {
         <span className='block'>{data.title}</span>
         <div className='flex justify-between'>
           <span className='block'>{`$${data.price}`}</span>
-          <BsFillBagFill />
+          <button>
+            <BsFillBagFill />
+          </button>
         </div>
       </div>
     </div>
