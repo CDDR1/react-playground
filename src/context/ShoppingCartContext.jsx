@@ -2,7 +2,7 @@ import { createContext, useState } from "react";
 
 const ShoppingCartContext = createContext();
 
-export function ShoppingCartProvider({ children }) {
+export const ShoppingCartProvider = ({ children }) => {
   const [cartProducts, setCartProducts] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
 
