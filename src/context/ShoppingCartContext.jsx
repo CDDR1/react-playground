@@ -12,7 +12,7 @@ export const ShoppingCartProvider = ({ children }) => {
   
   const removeFromCart = (productToRemove) => {
     if (productToRemove.quantity === 1) {
-      setCartProducts(cartProducts.filter((product) => product.id !== productToRemove.id));
+      deleteItemFromCart(productToRemove);
     } else {
       productToRemove.quantity--;
     }
