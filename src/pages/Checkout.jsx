@@ -1,6 +1,8 @@
 import React from "react";
 import ShoppingCartContext from "../context/ShoppingCartContext";
 import { useContext } from "react";
+import { GrAdd } from "react-icons/gr";
+import { AiOutlineMinus, AiFillDelete } from "react-icons/ai";
 
 const Checkout = () => {
   const { cartProducts } = useContext(ShoppingCartContext);
@@ -23,6 +25,17 @@ const Checkout = () => {
                     <span className="block">Price: ${product.price}</span>
                   </div>
                   <span className="block">Quantity: {product.quantity}</span>
+                  <div className="flex gap-4">
+                    <button>
+                      <GrAdd />
+                    </button>
+                    <button>
+                      <AiOutlineMinus />
+                    </button>
+                    <button>
+                      <AiFillDelete />
+                    </button>
+                  </div>
                 </div>
               </div>
             );
