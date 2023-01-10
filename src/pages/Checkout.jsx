@@ -8,6 +8,7 @@ const Checkout = () => {
   const { cartProducts } = useContext(ShoppingCartContext);
   const { totalPrice } = useContext(ShoppingCartContext);
   const { addToCart } = useContext(ShoppingCartContext);
+  const { removeFromCart } = useContext(ShoppingCartContext);
 
   return (
     <div className="p-4">
@@ -30,7 +31,7 @@ const Checkout = () => {
                     <button onClick={() => addToCart(product.id, product.image, product.name, product.price)} >
                       <GrAdd />
                     </button>
-                    <button>
+                    <button onClick={() => removeFromCart(product)}>
                       <AiOutlineMinus />
                     </button>
                     <button>

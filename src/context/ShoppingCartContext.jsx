@@ -6,9 +6,14 @@ export const ShoppingCartProvider = ({ children }) => {
   const [cartProducts, setCartProducts] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
 
-  // const incrementProductQuantity = (product) => {
-  //   product.quantity++;
-  // };
+  const removeFromCart = (productToRemove) => {
+    if (productToRemove.quantity === 1) {
+      setCartProducts(cartProducts.filter((product) => product.id !== productToRemove.id));
+    } else {
+      productToRemove.quantity--;
+    }
+    setTotalPrice((prevState) => (prevState -= productToRemove.price));
+  };
 
   const addToCart = (productId, productPicture, productName, productPrice) => {
     const product = cartProducts.find((product) => product.id === productId);
@@ -20,7 +25,7 @@ export const ShoppingCartProvider = ({ children }) => {
     setTotalPrice((prevState) => (prevState += productPrice));
   };
 
-  return <ShoppingCartContext.Provider value={{ cartProducts, totalPrice, addToCart }}>{children}</ShoppingCartContext.Provider>;
+  return <ShoppingCartContext.Provider value={{ cartProducts, totalPrice, addToCart, removeFromCart }}>{children}</ShoppingCartContext.Provider>;
 };
 
 export default ShoppingCartContext;
