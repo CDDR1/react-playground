@@ -6,8 +6,12 @@ export const ShoppingCartProvider = ({ children }) => {
   const [cartProducts, setCartProducts] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
 
+  // const incrementProductQuantity = (product) => {
+  //   product.quantity++;
+  // };
+
   const addToCart = (productId, productPicture, productName, productPrice) => {
-    const product = cartProducts.find(product => product.id === productId)
+    const product = cartProducts.find((product) => product.id === productId);
     if (product) {
       product.quantity++;
     } else {
@@ -17,6 +21,6 @@ export const ShoppingCartProvider = ({ children }) => {
   };
 
   return <ShoppingCartContext.Provider value={{ cartProducts, totalPrice, addToCart }}>{children}</ShoppingCartContext.Provider>;
-}
+};
 
 export default ShoppingCartContext;

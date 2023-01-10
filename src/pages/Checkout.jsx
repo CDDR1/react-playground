@@ -7,6 +7,7 @@ import { AiOutlineMinus, AiFillDelete } from "react-icons/ai";
 const Checkout = () => {
   const { cartProducts } = useContext(ShoppingCartContext);
   const { totalPrice } = useContext(ShoppingCartContext);
+  const { addToCart } = useContext(ShoppingCartContext);
 
   return (
     <div className="p-4">
@@ -26,7 +27,7 @@ const Checkout = () => {
                   </div>
                   <span className="block">Quantity: {product.quantity}</span>
                   <div className="flex gap-4">
-                    <button>
+                    <button onClick={() => addToCart(product.id, product.image, product.name, product.price)} >
                       <GrAdd />
                     </button>
                     <button>
