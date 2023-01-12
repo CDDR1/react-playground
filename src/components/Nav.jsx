@@ -11,7 +11,7 @@ const Nav = () => {
   const totalQuantity = cartProducts.reduce((acc, product) => acc + product.quantity, 0);
  
   return (
-    <nav className="bg-gray-900 text-white p-3">
+    <nav className="bg-gray-900 text-white p-3 sticky top-0">
       <ul className="flex justify-around">
         <li className="flex gap-2 items-center">
           <Link to="/">Products</Link>
