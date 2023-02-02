@@ -15,7 +15,7 @@ export const ShoppingCartProvider = ({ children }) => {
     const productsCopy = cartProducts.map((product) => product);
     const updatedProducts = productsCopy.filter((product) => product.id !== productToDelete.id);
     setCartProducts(updatedProducts);
-    updateTotalPrice(-productToDelete.price);
+    updateTotalPrice(-productToDelete.price * productToDelete.quantity);
   };
 
   const decrementProductQuantity = (productToRemove) => {
