@@ -6,8 +6,9 @@ export const ShoppingCartProvider = ({ children }) => {
   const [cartProducts, setCartProducts] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
 
-  const deleteItemFromCart = (productToDelete) => {
-    setCartProducts(cartProducts.filter((product) => product.id !== productToDelete.id));
+  const deleteProductFromCart = (productToDelete) => {
+    const updatedProducts = cartProducts.filter((product) => product.id !== productToDelete.id);
+    setCartProducts(updatedProducts);
   };
 
   const removeFromCart = (productToRemove) => {
@@ -39,7 +40,7 @@ export const ShoppingCartProvider = ({ children }) => {
     }
   };
 
-  return <ShoppingCartContext.Provider value={{ cartProducts, totalPrice, addToCart, incrementProductCount, removeFromCart, deleteItemFromCart }}>{children}</ShoppingCartContext.Provider>;
+  return <ShoppingCartContext.Provider value={{ cartProducts, totalPrice, addToCart, incrementProductCount, removeFromCart, deleteProductFromCart }}>{children}</ShoppingCartContext.Provider>;
 };
 
 export default ShoppingCartContext;

@@ -5,7 +5,7 @@ import { GrAdd } from "react-icons/gr";
 import { AiOutlineMinus, AiFillDelete } from "react-icons/ai";
 
 const Checkout = () => {
-  const { cartProducts, totalPrice, addToCart, incrementProductCount, removeFromCart, deleteItemFromCart } = useContext(ShoppingCartContext);
+  const { cartProducts, totalPrice, addToCart, incrementProductCount, removeFromCart, deleteProductFromCart } = useContext(ShoppingCartContext);
 
   return (
     <div className="p-4">
@@ -31,7 +31,7 @@ const Checkout = () => {
                     <button onClick={() => removeFromCart(product)}>
                       <AiOutlineMinus />
                     </button>
-                    <button onClick={() => deleteItemFromCart(product)}>
+                    <button onClick={() => deleteProductFromCart(product)}>
                       <AiFillDelete />
                     </button>
                   </div>
