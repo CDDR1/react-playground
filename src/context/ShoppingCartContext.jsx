@@ -7,7 +7,9 @@ export const ShoppingCartProvider = ({ children }) => {
   const [totalPrice, setTotalPrice] = useState(0);
 
   const deleteProductFromCart = (productToDelete) => {
-    const updatedProducts = cartProducts.filter((product) => product.id !== productToDelete.id);
+    // TODO: Try to combine these two methods into a single reduce method.
+    const productsCopy = cartProducts.map(product => product);
+    const updatedProducts = productsCopy.filter((product) => product.id !== productToDelete.id);
     setCartProducts(updatedProducts);
   };
 
@@ -15,13 +17,13 @@ export const ShoppingCartProvider = ({ children }) => {
     if (productToRemove.quantity === 1) {
       deleteProductFromCart(productToRemove);
     } else {
-      const updatedProducts = cartProducts.map(product => {
+      const updatedProducts = cartProducts.map((product) => {
         if (product.id === productToRemove.id) {
           return { ...product, quantity: --product.quantity };
         } else {
           return { ...product };
         }
-      })
+      });
       setCartProducts(updatedProducts);
     }
     setTotalPrice((prevState) => (prevState -= productToRemove.price));
