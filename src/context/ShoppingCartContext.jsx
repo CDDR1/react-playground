@@ -27,7 +27,7 @@ export const ShoppingCartProvider = ({ children }) => {
     setTotalPrice((prevState) => (prevState -= productToRemove.price));
   };
 
-  const incrementProductCount = (productToIncrement) => {
+  const incrementProductQuantity = (productToIncrement) => {
     const updatedCartProducts = cartProducts.map((product) => {
       if (product.id === productToIncrement.id) {
         return { ...product, quantity: ++product.quantity };
@@ -47,7 +47,7 @@ export const ShoppingCartProvider = ({ children }) => {
     }
   };
 
-  return <ShoppingCartContext.Provider value={{ cartProducts, totalPrice, addToCart, incrementProductCount, decrementProductQuantity, deleteProductFromCart }}>{children}</ShoppingCartContext.Provider>;
+  return <ShoppingCartContext.Provider value={{ cartProducts, totalPrice, addToCart, incrementProductQuantity, decrementProductQuantity, deleteProductFromCart }}>{children}</ShoppingCartContext.Provider>;
 };
 
 export default ShoppingCartContext;

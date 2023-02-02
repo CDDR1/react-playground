@@ -5,7 +5,7 @@ import { GrAdd } from "react-icons/gr";
 import { AiOutlineMinus, AiFillDelete } from "react-icons/ai";
 
 const Checkout = () => {
-  const { cartProducts, totalPrice, incrementProductCount, decrementProductQuantity, deleteProductFromCart } = useContext(ShoppingCartContext);
+  const { cartProducts, totalPrice, incrementProductQuantity, decrementProductQuantity, deleteProductFromCart } = useContext(ShoppingCartContext);
 
   return (
     <div className="p-4">
@@ -25,7 +25,7 @@ const Checkout = () => {
                   </div>
                   <span className="block">Quantity: {product.quantity}</span>
                   <div className="flex gap-4">
-                    <button onClick={() => incrementProductCount(product)}>
+                    <button onClick={() => incrementProductQuantity(product)}>
                       <GrAdd />
                     </button>
                     <button onClick={() => decrementProductQuantity(product)}>
